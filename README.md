@@ -24,6 +24,7 @@
 
 	📌 标题：【PC+KRKR】千恋万花
 	🔗 链接：https://nn0721.icu/184.html
+![0721galgame](https://github.com/user-attachments/assets/3aa56eb2-7521-42ea-8cb1-92efee9b651e)
 
 ## 参考
 
