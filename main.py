@@ -58,7 +58,7 @@ class GalSearchPlugin(Star):
                     
                     # 去重并保存结果
                     if game_title and game_url:
-                        results.append(f"📌 标题：{game_title}\n🔗 链接：{game_url}")
+                        results.append(f"📌 标题：{game_title}\n🔗 链接：\n{game_url}")
 
             # 去重处理（防止重复条目）
             unique_results = list({v.split('链接：')[1]: v for v in results}.values())
