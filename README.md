@@ -1,3 +1,5 @@
+# 主站https://nn0721.icu
+
 # AstrBot galgame搜索插件
 
 ## 简介
