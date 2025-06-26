@@ -1,4 +1,5 @@
 import aiohttp
+import asyncio
 from bs4 import BeautifulSoup
 from astrbot.api.event import filter, AstrMessageEvent
 from astrbot.api.star import Context, Star, register
@@ -19,9 +20,11 @@ class GalSearchPlugin(Star):
         '''搜索Gal游戏信息\n用法：/查gal 游戏名称'''
         args = event.message_str.split(maxsplit=1)
         if len(args) < 2:
-            yield event.plain_result("请输入要查询的游戏名称，例如：/查gal 千恋万花")
+            yield event.plain_result("请输入要查询的游戏名称，例如：/查gal 千原万神")
             return
-
+        
+        await asyncio.sleep(2.0)
+        
         keyword = args[1]
         try:
             async with aiohttp.ClientSession(headers=self.headers) as session:
@@ -58,7 +61,7 @@ class GalSearchPlugin(Star):
                     
                     # 去重并保存结果
                     if game_title and game_url:
-                        results.append(f"📌 标题：{game_title}\n🔗 链接：\n{game_url}")
+                        results.append(f"📌 标题：\n{game_title}\n🔗 链接：\n{game_url}")
 
             # 去重处理（防止重复条目）
             unique_results = list({v.split('链接：')[1]: v for v in results}.values())
@@ -68,7 +71,7 @@ class GalSearchPlugin(Star):
                 return
 
             # 返回最多6条结果，因为网站设置第一页显示6条
-            reply = f"🔍 找到 {len(unique_results)} 条结果：\n\n" + "\n\n".join(unique_results[:6])
+            reply = f"↓↓↓↓↓↓\n(链接复制到浏览器打开喵~) \n 🔍 找到 {len(unique_results)} 条结果：\n\n" + "\n\n".join(unique_results[:6])
             yield event.plain_result(reply)
 
         except aiohttp.ClientError as e:
